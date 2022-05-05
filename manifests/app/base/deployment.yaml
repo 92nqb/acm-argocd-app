@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acm-argo-app
+  labels:
+    app: acm-argo-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: acm-argo-app
+  template:
+    metadata:
+      labels:
+        app: acm-argo-app
+    spec:
+      containers:
+      - name: acm-argo-app
+        image: nicolasquiceno/acm-argo-app:0.0.5
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "100Mi"
+          limits:
+            memory: "200Mi"
+        env:
+        - name: TITLE
+          value: "ACM - ROKS - Satellite demo"
+        - name: DESCRIPTION
+          value: "Sweet OpenShift experience"
+        # readinessProbe:
+        # livenessProbe:
+        #   httpGet:
+        #     path: /healthz
+        #     port: 8080
+        #     httpHeaders:
+        #     - name: Custom-Header
+        #       value: Awesome
+        #   initialDelaySeconds: 3
+        #   periodSeconds: 3
