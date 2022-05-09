@@ -8,4 +8,4 @@ spec:
   - requiredClusterSelector:
       labelSelector:
         matchLabels:
-          cluster-app: true
+          cluster-app: acm-argocd-app
