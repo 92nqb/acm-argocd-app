@@ -6,4 +6,5 @@ namespace: default
 resources:
 - ./deployment.yaml
 - ./service.yaml
-- ./route.yaml
+- ./service_port.yaml
+# - ./route.yaml

@@ -9,7 +9,7 @@ spec:
     repoURL: https://github.com/argoproj/argocd-example-apps.git
     targetRevision: HEAD
     # path: manifests/appset
-    path: manifests/app/clusters/roks-on-prem
+    path: manifests/base
   destination:
     server: https://kubernetes.default.svc
     namespace: default
