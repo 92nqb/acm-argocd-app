@@ -25,6 +25,7 @@ spec:
         namespace: default
       syncPolicy:
         automated:
+          prune: true
         syncOptions:
             - PruneLast=true
             - PrunePropagationPolicy=foreground
