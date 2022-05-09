@@ -6,10 +6,13 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    repoURL: https://github.com/92nqb/acm-argocd-app.git
     targetRevision: HEAD
-    # path: manifests/appset
-    path: manifests/base
+    path: manifests/appset
+    # path: manifests/app/base
   destination:
-    server: https://kubernetes.default.svc
+    server: https://c114-e.eu-de.containers.cloud.ibm.com:30957
     namespace: default
+  syncPolicy:
+    automated:
+      prune: true

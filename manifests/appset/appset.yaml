@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: acm-argocd-app
+  namespace: openshift-gitops
+spec:
+  generators:
+    - clusterDecisionResource:
+        configMapRef: acm-placement
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: acm-argocd-app-placement
+        requeueAfterSeconds: 180
+  template:
+    metadata:
+      name: 'acm-argocd-app-{{name}}'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/92nqb/acm-argocd-app.git
+        targetRevision: HEAD
+        path: manifests/app/base
+      destination:
+        server: '{{server}}'
+        namespace: default
+      syncPolicy:
+        automated:
+        syncOptions:
+            - PruneLast=true
+            - PrunePropagationPolicy=foreground
