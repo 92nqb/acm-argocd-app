@@ -21,9 +21,11 @@ spec:
         - containerPort: 8080
         resources:
           requests:
-            memory: "100Mi"
+            cpu: 2
+            memory: "2Gi"
           limits:
-            memory: "200Mi"
+            cpu: 4
+            memory: "4Gi"
         env:
         - name: TITLE
           value: "ACM - ROKS - Satellite demo"
